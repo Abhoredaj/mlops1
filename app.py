@@ -12,7 +12,7 @@ template_dir = os.path.join(webapp_root, "templates")
 app = Flask(__name__, static_folder=static_dir,template_folder=template_dir)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"]) 
 def index():
 
     if request.method == "POST":
@@ -20,9 +20,17 @@ def index():
             if request.form:
                 dict_req = dict(request.form)
                 response = prediction.form_response(dict_req)
-                return render_template("index.html", response=response)
+                #print(response)
+                if response == 1.0:
+                    res = "Fine"
+                if response == 2.0:
+                    res = "Suspect"
+                if response == 3.0:
+                    res = "Fatal"
+                return render_template("index.html", response=res)
             elif request.json:
                 response = prediction.api_response(request.json)
+                #print(response)
                 return jsonify(response)
 
         except Exception as e:

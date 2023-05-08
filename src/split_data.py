@@ -15,6 +15,8 @@ def split_and_saved_data(config_path):
     random_state = config["base"]["random_state"]
 
     df = pd.read_csv(raw_data_path, sep=",")
+    df = df.drop(["Unnamed:_0"],axis=1)
+    #print(df.columns)
     train, test = train_test_split(
         df, 
         test_size=split_ratio, 

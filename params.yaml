@@ -1,26 +1,26 @@
 base:
   project: winequality-project
   random_state: 42
-  target_col: TARGET
+  target_col: fetal_health
 
 data_source:
-  s3_source: data_given/winequality.csv
+  s3_source: data_given/file1.csv
 
 load_data:
-  raw_dataset_csv: data/raw/winequality.csv
+  raw_dataset_csv: data/raw/file1.csv
 
 split_data:
-  train_path: data/processed/train_winequality.csv
-  test_path: data/processed/test_winequality.csv
+  train_path: data/processed/train_file1.csv
+  test_path: data/processed/test_file1.csv
   test_size: 0.2
 
 estimators:
-  ElasticNet:
+  RandomForestClassifier:
     params:
-      # alpha: 0.88
-      # l1_ratio: 0.89
-      alpha: 0.9
-      l1_ratio: 0.4
+      n_estimators: 900
+      #l1_ratio: 0.89
+      # alpha: 0.9
+      # l1_ratio: 0.4
 model_dir: saved_models
 
 reports:

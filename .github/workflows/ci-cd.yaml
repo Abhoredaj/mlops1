@@ -35,6 +35,28 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v
+  
+  #deploy:
+  #  needs: [test]
+  #  runs-on: ubuntu-latest
+
+  #  steps:
+  #  - name: Checkout source code
+  #    uses: actions/checkout@v2
+
+  #  - name: Generate deployment package
+  #    run: zip -r deploy.zip . -x '*.git*'
+
+  #  - name: Deploy to EB
+  #    uses: einaregilsson/beanstalk-deploy@v20
+  #    with:
+  #      aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #      aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #      application_name: mlops1
+  #      environment_name: Mlops1-env
+  #      version_label: 12348
+  #      region: "ap-south-1"
+  #      deployment_package: deploy.zip
     #- name: Deploy to Heroku
     #  env:
     #    HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}

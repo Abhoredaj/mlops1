@@ -2,7 +2,7 @@ import yaml
 import os
 import json
 import joblib
-import numpy as np
+import numpy as np 
 
 
 params_path = "params.yaml"
